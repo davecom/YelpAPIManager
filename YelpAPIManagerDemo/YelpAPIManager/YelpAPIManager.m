@@ -12,10 +12,15 @@
 #import "NSString+Encoding.h"
 #import "YelpAPIUtilities.h"
 
-static NSString *kYelpAPIBaseURL = @"http://api.yelp.com";
+static NSString *kYelpAPIBaseURL = @"http://api.yelp.com/v2";
+static NSString *kSignatureMethod = @"HMAC-SHA1";
 
 @interface YelpAPIManager()
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
+@property (nonatomic, strong) NSString *consumerKey;
+@property (nonatomic, strong) NSString *consumerSecret;
+@property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSString *tokenSecret;
 @end
 
 @implementation YelpAPIManager
@@ -24,6 +29,14 @@ static NSString *kYelpAPIBaseURL = @"http://api.yelp.com";
     self = [super init];
     if (self) {
         _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kYelpAPIBaseURL]];
+        
+        NSURL *file = [[NSBundle mainBundle] URLForResource:@"YelpAPIConstants" withExtension:@"plist"];
+        NSDictionary *APIConstants = [NSDictionary dictionaryWithContentsOfURL:file];
+        
+        self.consumerKey = APIConstants[@"ConsumerKey"];
+        self.consumerSecret = APIConstants[@"ConsumerSecret"];
+        self.token = APIConstants[@"Token"];
+        self.tokenSecret = APIConstants[@"TokenSecret"];
     }
     return self;
 }
@@ -47,39 +60,14 @@ static NSString *kYelpAPIBaseURL = @"http://api.yelp.com";
     [params setObject:@"restaurant" forKey:@"term"];
     [params setObject:@"New York" forKey:@"location"];
 
-    NSError *error = nil;
-    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer new];
-    NSURLRequest *request = [requestSerializer requestWithMethod:@"GET" URLString:@"http://api.yelp.com/v2/search" parameters:params error:&error];
-    
-    NSString *tokenString = request.URL.absoluteString;
-    NSString *encodedToken = [request.URL.absoluteString encodedURLParameterString];
-    
-    //Replace the first encountered encoded "&"
-    NSRange rOriginal = [encodedToken rangeOfString:@"%3F"];
-    if (NSNotFound != rOriginal.location) {
-        encodedToken = [encodedToken stringByReplacingCharactersInRange:rOriginal withString:@"&"];
-    }
-    
-    NSString *tokenStringEncoded = [NSString stringWithFormat:@"GET&%@", encodedToken];
-    
-    NSDictionary *consumer = [self APIConstantsDictionary];
-    NSString *encodedTokenSecret = [consumer[@"TokenSecret"] encodedURLParameterString];
-    NSString *encodedConsumerSecret = [consumer[@"ConsumerSecret"] encodedURLParameterString];
-    
-    NSLog(@"Token string: %@\n\n", tokenString);
-    NSLog(@"TOken string: %@\n\n", tokenStringEncoded);
-    
-    NSString *signature = [YelpAPIUtilities hmacsha1:tokenStringEncoded secret:[NSString stringWithFormat:@"%@&%@", encodedConsumerSecret, encodedTokenSecret]];
+    NSString *signature = [self generateSignatureWithMethod:@"GET" endPoint:@"search" params:params];
     [params setObject:signature forKey:@"oauth_signature"];
     
-    [_sessionManager GET:@"/v2/search" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+    [_sessionManager GET:@"search" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Response: %@", responseObject);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
         NSLog(@"error: %@", error);
-        
     }];
 }
 
@@ -99,29 +87,52 @@ static NSString *kYelpAPIBaseURL = @"http://api.yelp.com";
 
 #pragma mark - Helper
 
-- (NSDictionary *)APIConstantsDictionary {
-    NSURL *file = [[NSBundle mainBundle] URLForResource:@"YelpAPIConstants" withExtension:@"plist"];
-    return [NSDictionary dictionaryWithContentsOfURL:file];
-}
-
 - (NSDictionary *)oauthDictionary {
-    NSDictionary *consumer = [self APIConstantsDictionary];
-    NSString *consumerKey = consumer[@"ConsumerKey"];
-    NSString *token = consumer[@"Token"];
-    //NSString *signature = [self hmacsha1:token secret:secret];
-    NSString *nonce = [YelpAPIUtilities uniqueNonceString];
     
-    NSLog(@"key: %@, token: %@, once: %@", consumerKey, token, nonce);
-    
-    
-    NSDictionary *oauth = @{@"oauth_consumer_key": consumer[@"ConsumerKey"],
-                            @"oauth_token": consumer[@"Token"],
-                            @"oauth_signature_method": @"HMAC-SHA1",
+    NSDictionary *oauth = @{@"oauth_consumer_key": self.consumerKey,
+                            @"oauth_token": self.token,
+                            @"oauth_signature_method": kSignatureMethod,
                             //@"oauth_signature": signature,
-                            @"oauth_timestamp": [[NSString alloc]initWithFormat:@"%ld", time(NULL)],
-                            @"oauth_nonce": nonce
+                            @"oauth_timestamp": [YelpAPIUtilities stringForSecondsSinceUnixEpoch],
+                            @"oauth_nonce": [YelpAPIUtilities uniqueNonceString]
                             };
     return oauth;
+}
+
+
+- (NSString *)generateSignatureWithMethod:(NSString *)method endPoint:(NSString *)endPoint params:(NSDictionary *)params {
+    
+    NSError *error = nil;
+    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer new];
+    
+    NSString *baseURLString = [NSString stringWithFormat:@"%@/%@", kYelpAPIBaseURL, endPoint];
+    NSURLRequest *request = [requestSerializer requestWithMethod:method URLString:baseURLString parameters:params error:&error];
+    
+    NSString *tokenString = request.URL.absoluteString;
+    NSString *encodedToken = [request.URL.absoluteString encodedURLParameterString];
+    
+    //Replace the first encountered encoded "&"
+    NSRange rOriginal = [encodedToken rangeOfString:@"%3F"];
+    if (NSNotFound != rOriginal.location) {
+        encodedToken = [encodedToken stringByReplacingCharactersInRange:rOriginal withString:@"&"];
+    }
+    
+    NSString *tokenStringEncoded = [NSString stringWithFormat:@"GET&%@", encodedToken];
+    
+    NSLog(@"Token string: %@\n\n", tokenString);
+    NSLog(@"TOken string: %@\n\n", tokenStringEncoded);
+    
+    NSString *APISecret = [self APISecret];
+    NSString *signature = [YelpAPIUtilities hmacsha1:tokenStringEncoded secret:APISecret];
+    
+    return signature;
+}
+
+
+- (NSString *)APISecret {
+    NSString *encodedTokenSecret = [self.tokenSecret encodedURLParameterString];
+    NSString *encodedConsumerSecret = [self.consumerSecret encodedURLParameterString];
+    return [NSString stringWithFormat:@"%@&%@", encodedConsumerSecret, encodedTokenSecret];
 }
 
 @end

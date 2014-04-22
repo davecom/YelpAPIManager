@@ -12,5 +12,6 @@
 
 + (NSString *)uniqueNonceString;
 + (NSString *)hmacsha1:(NSString *)source secret:(NSString *)key;
++ (NSString *)stringForSecondsSinceUnixEpoch;
 
 @end

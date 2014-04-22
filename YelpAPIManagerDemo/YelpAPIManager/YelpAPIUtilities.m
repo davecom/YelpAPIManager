@@ -35,4 +35,9 @@
     return hash;
 }
 
+
++ (NSString *)stringForSecondsSinceUnixEpoch {
+    return [[NSString alloc] initWithFormat:@"%ld", time(NULL)];
+}
+
 @end
