@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DA9A5541906A22000148541 /* NSData+Base64Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9A5531906A22000148541 /* NSData+Base64Encoder.m */; };
+		4DA9A5571906A23300148541 /* NSString+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9A5561906A23300148541 /* NSString+Encoding.m */; };
+		4DA9A55B1906A2EF00148541 /* YelpAPIUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9A55A1906A2EF00148541 /* YelpAPIUtilities.m */; };
 		4DB9AE891904D1EF00F0D562 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB9AE881904D1EF00F0D562 /* Foundation.framework */; };
 		4DB9AE8B1904D1EF00F0D562 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB9AE8A1904D1EF00F0D562 /* CoreGraphics.framework */; };
 		4DB9AE8D1904D1EF00F0D562 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB9AE8C1904D1EF00F0D562 /* UIKit.framework */; };
@@ -23,7 +26,6 @@
 		4DB9AEB41904D1EF00F0D562 /* YelpAPIManagerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB9AEB31904D1EF00F0D562 /* YelpAPIManagerDemoTests.m */; };
 		4DB9AEC31904D23200F0D562 /* YelpAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB9AEC21904D23200F0D562 /* YelpAPIManager.m */; };
 		4DB9AEC51904D3F100F0D562 /* YelpAPIConstants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DB9AEC41904D3F100F0D562 /* YelpAPIConstants.plist */; };
-		4DCE63351906227F00E48462 /* NSData+Base64Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE63341906227F00E48462 /* NSData+Base64Encoder.m */; };
 		800A775BB1534AEC811868F3 /* libPods-YelpAPIManagerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E76568BB534B56A917E71D /* libPods-YelpAPIManagerDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,12 @@
 
 /* Begin PBXFileReference section */
 		3C26D4A249864FD194DBA2CC /* Pods-YelpAPIManagerDemo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpAPIManagerDemo.xcconfig"; path = "Pods/Pods-YelpAPIManagerDemo.xcconfig"; sourceTree = "<group>"; };
+		4DA9A5521906A22000148541 /* NSData+Base64Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64Encoder.h"; sourceTree = "<group>"; };
+		4DA9A5531906A22000148541 /* NSData+Base64Encoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64Encoder.m"; sourceTree = "<group>"; };
+		4DA9A5551906A23300148541 /* NSString+Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Encoding.h"; sourceTree = "<group>"; };
+		4DA9A5561906A23300148541 /* NSString+Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Encoding.m"; sourceTree = "<group>"; };
+		4DA9A5591906A2EF00148541 /* YelpAPIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpAPIUtilities.h; sourceTree = "<group>"; };
+		4DA9A55A1906A2EF00148541 /* YelpAPIUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpAPIUtilities.m; sourceTree = "<group>"; };
 		4DB9AE851904D1EF00F0D562 /* YelpAPIManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YelpAPIManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB9AE881904D1EF00F0D562 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DB9AE8A1904D1EF00F0D562 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,8 +69,6 @@
 		4DB9AEC11904D23200F0D562 /* YelpAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpAPIManager.h; sourceTree = "<group>"; };
 		4DB9AEC21904D23200F0D562 /* YelpAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpAPIManager.m; sourceTree = "<group>"; };
 		4DB9AEC41904D3F100F0D562 /* YelpAPIConstants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YelpAPIConstants.plist; sourceTree = "<group>"; };
-		4DCE63331906227F00E48462 /* NSData+Base64Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64Encoder.h"; sourceTree = "<group>"; };
-		4DCE63341906227F00E48462 /* NSData+Base64Encoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64Encoder.m"; sourceTree = "<group>"; };
 		58E76568BB534B56A917E71D /* libPods-YelpAPIManagerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YelpAPIManagerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -91,6 +97,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4DA9A5511906A1FA00148541 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4DA9A5521906A22000148541 /* NSData+Base64Encoder.h */,
+				4DA9A5531906A22000148541 /* NSData+Base64Encoder.m */,
+				4DA9A5551906A23300148541 /* NSString+Encoding.h */,
+				4DA9A5561906A23300148541 /* NSString+Encoding.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		4DB9AE7C1904D1EF00F0D562 = {
 			isa = PBXGroup;
 			children = (
@@ -170,11 +187,12 @@
 		4DB9AEBD1904D1F700F0D562 /* YelpAPIManager */ = {
 			isa = PBXGroup;
 			children = (
-				4DCE63331906227F00E48462 /* NSData+Base64Encoder.h */,
-				4DCE63341906227F00E48462 /* NSData+Base64Encoder.m */,
+				4DA9A5511906A1FA00148541 /* Categories */,
 				4DB9AEC11904D23200F0D562 /* YelpAPIManager.h */,
 				4DB9AEC21904D23200F0D562 /* YelpAPIManager.m */,
 				4DB9AEC41904D3F100F0D562 /* YelpAPIConstants.plist */,
+				4DA9A5591906A2EF00148541 /* YelpAPIUtilities.h */,
+				4DA9A55A1906A2EF00148541 /* YelpAPIUtilities.m */,
 			);
 			path = YelpAPIManager;
 			sourceTree = "<group>";
@@ -313,11 +331,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DCE63351906227F00E48462 /* NSData+Base64Encoder.m in Sources */,
+				4DA9A5571906A23300148541 /* NSString+Encoding.m in Sources */,
+				4DA9A5541906A22000148541 /* NSData+Base64Encoder.m in Sources */,
 				4DB9AE9F1904D1EF00F0D562 /* YMViewController.m in Sources */,
 				4DB9AE991904D1EF00F0D562 /* YMAppDelegate.m in Sources */,
 				4DB9AE951904D1EF00F0D562 /* main.m in Sources */,
 				4DB9AEC31904D23200F0D562 /* YelpAPIManager.m in Sources */,
+				4DA9A55B1906A2EF00148541 /* YelpAPIUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
