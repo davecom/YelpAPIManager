@@ -23,6 +23,7 @@
 		4DB9AEB41904D1EF00F0D562 /* YelpAPIManagerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB9AEB31904D1EF00F0D562 /* YelpAPIManagerDemoTests.m */; };
 		4DB9AEC31904D23200F0D562 /* YelpAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB9AEC21904D23200F0D562 /* YelpAPIManager.m */; };
 		4DB9AEC51904D3F100F0D562 /* YelpAPIConstants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DB9AEC41904D3F100F0D562 /* YelpAPIConstants.plist */; };
+		4DCE63351906227F00E48462 /* NSData+Base64Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE63341906227F00E48462 /* NSData+Base64Encoder.m */; };
 		800A775BB1534AEC811868F3 /* libPods-YelpAPIManagerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E76568BB534B56A917E71D /* libPods-YelpAPIManagerDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,8 @@
 		4DB9AEC11904D23200F0D562 /* YelpAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpAPIManager.h; sourceTree = "<group>"; };
 		4DB9AEC21904D23200F0D562 /* YelpAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpAPIManager.m; sourceTree = "<group>"; };
 		4DB9AEC41904D3F100F0D562 /* YelpAPIConstants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YelpAPIConstants.plist; sourceTree = "<group>"; };
+		4DCE63331906227F00E48462 /* NSData+Base64Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64Encoder.h"; sourceTree = "<group>"; };
+		4DCE63341906227F00E48462 /* NSData+Base64Encoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64Encoder.m"; sourceTree = "<group>"; };
 		58E76568BB534B56A917E71D /* libPods-YelpAPIManagerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YelpAPIManagerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -167,6 +170,8 @@
 		4DB9AEBD1904D1F700F0D562 /* YelpAPIManager */ = {
 			isa = PBXGroup;
 			children = (
+				4DCE63331906227F00E48462 /* NSData+Base64Encoder.h */,
+				4DCE63341906227F00E48462 /* NSData+Base64Encoder.m */,
 				4DB9AEC11904D23200F0D562 /* YelpAPIManager.h */,
 				4DB9AEC21904D23200F0D562 /* YelpAPIManager.m */,
 				4DB9AEC41904D3F100F0D562 /* YelpAPIConstants.plist */,
@@ -308,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DCE63351906227F00E48462 /* NSData+Base64Encoder.m in Sources */,
 				4DB9AE9F1904D1EF00F0D562 /* YMViewController.m in Sources */,
 				4DB9AE991904D1EF00F0D562 /* YMAppDelegate.m in Sources */,
 				4DB9AE951904D1EF00F0D562 /* main.m in Sources */,
@@ -440,6 +446,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YelpAPIManagerDemo/YelpAPIManagerDemo-Prefix.pch";
 				INFOPLIST_FILE = "YelpAPIManagerDemo/YelpAPIManagerDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -454,6 +464,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YelpAPIManagerDemo/YelpAPIManagerDemo-Prefix.pch";
 				INFOPLIST_FILE = "YelpAPIManagerDemo/YelpAPIManagerDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

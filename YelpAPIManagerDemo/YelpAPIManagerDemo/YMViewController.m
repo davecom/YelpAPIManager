@@ -7,6 +7,7 @@
 //
 
 #import "YMViewController.h"
+#import "YelpAPIManager.h"
 
 @interface YMViewController ()
 
@@ -17,7 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    [[YelpAPIManager sharedInstance] search];
 }
 
 - (void)didReceiveMemoryWarning

@@ -10,5 +10,8 @@
 
 @interface YelpAPIManager : NSObject
 
+- (void)search;
+
++ (id)sharedInstance;
 
 @end
