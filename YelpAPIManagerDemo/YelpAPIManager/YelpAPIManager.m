@@ -45,14 +45,16 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
 #pragma mark - Search
 
 - (void)search {
-    [self searchTerm:@"restaurant"
-            location:@"New York"
-               limit:1
+    [self searchTerm:nil
+        neighborhood:@"New York"
+          coordinate:kCLLocationCoordinate2DInvalid
+            location:nil
+               limit:0
               offset:0
                 sort:YelpSearchSortByBestMatch
-      categoryFilter:nil
+      categoryFilter:@"food"
               radius:5
-                deal:NO];
+                deal:YES];
 }
 
 - (void)searchTerm:(NSString *)term
@@ -81,14 +83,16 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
                          location.altitude,
                          location.verticalAccuracy];
     
-    } else if  (CLLocationCoordinate2DIsValid(coordinate)) {
-        params[@"cll"] = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
-        
+    } else {
         if (neighborhood.length > 0) {
             params[@"location"] = neighborhood;
         }
         
+        if (CLLocationCoordinate2DIsValid(coordinate)) {
+            params[@"cll"] = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+        }
     }
+    
     
     if (limit > 0) {
         params[@"limit"]  = @(limit);

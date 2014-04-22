@@ -23,7 +23,7 @@ typedef enum {
 @interface YelpAPIManager : NSObject
 
 /**
- *
+ *  Generic method for Yelp Search API
  *
  *  @param term           Search term (e.g. "food", "restaurants"). If term isn't included we search everything.
  
@@ -41,9 +41,6 @@ typedef enum {
  *  @param deal           Whether to exclusively search for businesses with deals.
  */
 
-- (void)search;
-
-
 - (void)searchTerm:(NSString *)term
       neighborhood:(NSString *)neighborhood
         coordinate:(CLLocationCoordinate2D)coordinate
@@ -54,6 +51,9 @@ typedef enum {
     categoryFilter:(NSString *)categoryFilter
             radius:(NSUInteger)radius
               deal:(BOOL)deal;
+
+
+- (void)search;
 
 + (id)sharedInstance;
 
