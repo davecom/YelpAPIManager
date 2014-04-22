@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7DC67CA1-6F4B-4CAD-BF5E-8B370923CB2E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>YelpAPIManagerDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7C88961B-80A1-4BE0-8E25-CE07805B7FAC</key>
+		<string>ssh://github.com/lonelytango/YelpAPIManager.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>YelpAPIManagerDemo/YelpAPIManagerDemo.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7C88961B-80A1-4BE0-8E25-CE07805B7FAC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/lonelytango/YelpAPIManager.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7C88961B-80A1-4BE0-8E25-CE07805B7FAC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7C88961B-80A1-4BE0-8E25-CE07805B7FAC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>YelpAPIManager</string>
+		</dict>
+	</array>
+</dict>
+</plist>
