@@ -27,6 +27,11 @@
 		4DB9AEB41904D1EF00F0D562 /* YelpAPIManagerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB9AEB31904D1EF00F0D562 /* YelpAPIManagerDemoTests.m */; };
 		4DB9AEC31904D23200F0D562 /* YelpAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB9AEC21904D23200F0D562 /* YelpAPIManager.m */; };
 		5D3C776119083E8E0083577C /* YelpLocationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3C776019083E8E0083577C /* YelpLocationObject.m */; };
+		5D3C776C190853A40083577C /* YelpDealObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3C776B190853A40083577C /* YelpDealObject.m */; };
+		5D3C776F190853AA0083577C /* YelpGiftCertificateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3C776E190853AA0083577C /* YelpGiftCertificateObject.m */; };
+		5D3C7772190853F80083577C /* YelpGiftCertificateOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3C7771190853F80083577C /* YelpGiftCertificateOption.m */; };
+		5D3C7775190854050083577C /* YelpDealOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3C7774190854050083577C /* YelpDealOption.m */; };
+		5D3C77781908621C0083577C /* YelpObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3C77771908621C0083577C /* YelpObject.m */; };
 		5DF09FCD1906FB0D00727F41 /* YelpAPIConstants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DF09FCA1906FB0D00727F41 /* YelpAPIConstants.plist */; };
 		5DF09FD51907077E00727F41 /* YelpBusinessObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF09FD41907077E00727F41 /* YelpBusinessObject.m */; };
 		5DF09FD71907086300727F41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF09FD61907086300727F41 /* CoreLocation.framework */; };
@@ -77,6 +82,16 @@
 		58E76568BB534B56A917E71D /* libPods-YelpAPIManagerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YelpAPIManagerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D3C775F19083E8E0083577C /* YelpLocationObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpLocationObject.h; sourceTree = "<group>"; };
 		5D3C776019083E8E0083577C /* YelpLocationObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpLocationObject.m; sourceTree = "<group>"; };
+		5D3C776A190853A40083577C /* YelpDealObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpDealObject.h; sourceTree = "<group>"; };
+		5D3C776B190853A40083577C /* YelpDealObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpDealObject.m; sourceTree = "<group>"; };
+		5D3C776D190853AA0083577C /* YelpGiftCertificateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpGiftCertificateObject.h; sourceTree = "<group>"; };
+		5D3C776E190853AA0083577C /* YelpGiftCertificateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpGiftCertificateObject.m; sourceTree = "<group>"; };
+		5D3C7770190853F80083577C /* YelpGiftCertificateOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpGiftCertificateOption.h; sourceTree = "<group>"; };
+		5D3C7771190853F80083577C /* YelpGiftCertificateOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpGiftCertificateOption.m; sourceTree = "<group>"; };
+		5D3C7773190854050083577C /* YelpDealOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpDealOption.h; sourceTree = "<group>"; };
+		5D3C7774190854050083577C /* YelpDealOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpDealOption.m; sourceTree = "<group>"; };
+		5D3C77761908621C0083577C /* YelpObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpObject.h; sourceTree = "<group>"; };
+		5D3C77771908621C0083577C /* YelpObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpObject.m; sourceTree = "<group>"; };
 		5DF09FCA1906FB0D00727F41 /* YelpAPIConstants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YelpAPIConstants.plist; sourceTree = "<group>"; };
 		5DF09FD31907077E00727F41 /* YelpBusinessObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpBusinessObject.h; sourceTree = "<group>"; };
 		5DF09FD41907077E00727F41 /* YelpBusinessObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpBusinessObject.m; sourceTree = "<group>"; };
@@ -213,6 +228,29 @@
 			path = YelpAPIManager;
 			sourceTree = "<group>";
 		};
+		5D3C77681908523D0083577C /* Deal */ = {
+			isa = PBXGroup;
+			children = (
+				5D3C776A190853A40083577C /* YelpDealObject.h */,
+				5D3C776B190853A40083577C /* YelpDealObject.m */,
+				5D3C7773190854050083577C /* YelpDealOption.h */,
+				5D3C7774190854050083577C /* YelpDealOption.m */,
+			);
+			path = Deal;
+			sourceTree = "<group>";
+		};
+		5D3C77691908524C0083577C /* Gift Certification */ = {
+			isa = PBXGroup;
+			children = (
+				5D3C776D190853AA0083577C /* YelpGiftCertificateObject.h */,
+				5D3C776E190853AA0083577C /* YelpGiftCertificateObject.m */,
+				5D3C7770190853F80083577C /* YelpGiftCertificateOption.h */,
+				5D3C7771190853F80083577C /* YelpGiftCertificateOption.m */,
+			);
+			name = "Gift Certification";
+			path = "Gift Certificate";
+			sourceTree = "<group>";
+		};
 		5DF09FC91906FAEA00727F41 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +262,10 @@
 		5DF09FD21907075100727F41 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				5D3C77761908621C0083577C /* YelpObject.h */,
+				5D3C77771908621C0083577C /* YelpObject.m */,
+				5D3C77691908524C0083577C /* Gift Certification */,
+				5D3C77681908523D0083577C /* Deal */,
 				5DF09FD31907077E00727F41 /* YelpBusinessObject.h */,
 				5DF09FD41907077E00727F41 /* YelpBusinessObject.m */,
 				5D3C775F19083E8E0083577C /* YelpLocationObject.h */,
@@ -369,10 +411,15 @@
 				4DA9A5571906A23300148541 /* NSString+Encoding.m in Sources */,
 				4DA9A5541906A22000148541 /* NSData+Base64Encoder.m in Sources */,
 				4DB9AE9F1904D1EF00F0D562 /* YMViewController.m in Sources */,
+				5D3C7772190853F80083577C /* YelpGiftCertificateOption.m in Sources */,
 				4DB9AE991904D1EF00F0D562 /* YMAppDelegate.m in Sources */,
 				5DF09FD51907077E00727F41 /* YelpBusinessObject.m in Sources */,
 				5D3C776119083E8E0083577C /* YelpLocationObject.m in Sources */,
 				4DB9AE951904D1EF00F0D562 /* main.m in Sources */,
+				5D3C7775190854050083577C /* YelpDealOption.m in Sources */,
+				5D3C77781908621C0083577C /* YelpObject.m in Sources */,
+				5D3C776C190853A40083577C /* YelpDealObject.m in Sources */,
+				5D3C776F190853AA0083577C /* YelpGiftCertificateObject.m in Sources */,
 				4DB9AEC31904D23200F0D562 /* YelpAPIManager.m in Sources */,
 				4DA9A55B1906A2EF00148541 /* YelpAPIUtilities.m in Sources */,
 				4DAA4D6519074B29003DC93A /* YelpAPIParser.m in Sources */,

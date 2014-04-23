@@ -7,18 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YelpObject.h"
 
 @class YelpLocationObject;
 
-@interface YelpBusinessObject : NSObject
+@interface YelpBusinessObject : YelpObject
 
 @property (nonatomic, strong) NSString *businessId;
 @property (nonatomic, strong) NSString *businessName;
 @property (nonatomic, strong) NSString *displayPhoneNumber;
 @property (nonatomic, strong) NSString *phoneNumber;
-@property (nonatomic, strong) NSDictionary *categories;
-@property (nonatomic, strong) YelpLocationObject *locationInfo;
 @property (nonatomic, strong) NSString *snippetText;
+
+@property (nonatomic, strong) NSDictionary *categories;
+
+@property (nonatomic, strong) NSArray *deals;
+@property (nonatomic, strong) NSArray *giftCertificates;
+
+@property (nonatomic, strong) YelpLocationObject *locationInfo;
 
 @property (nonatomic, assign) BOOL isClosed;
 @property (nonatomic, assign) BOOL isClaimed;

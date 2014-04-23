@@ -49,12 +49,14 @@
         
         //Location
         NSDictionary *locationDictionary = businessItem[@"location"];
-        object.locationInfo.addressArray = locationDictionary[@"display_address"];
-        object.locationInfo.city = locationDictionary[@"city"];
-        object.locationInfo.countryCode = locationDictionary[@"country_code"];
-        object.locationInfo.neighborhoods = locationDictionary[@"neighborhoods"];
-        object.locationInfo.postalCode = locationDictionary[@"postal_code"];
-        object.locationInfo.stateCode = locationDictionary[@"state_code"];
+        YelpLocationObject *locationInfo = [YelpLocationObject new];
+        locationInfo.addressArray = locationDictionary[@"display_address"];
+        locationInfo.city = locationDictionary[@"city"];
+        locationInfo.countryCode = locationDictionary[@"country_code"];
+        locationInfo.neighborhoods = locationDictionary[@"neighborhoods"];
+        locationInfo.postalCode = locationDictionary[@"postal_code"];
+        locationInfo.stateCode = locationDictionary[@"state_code"];
+        object.locationInfo = locationInfo;
         
         NSLog(@"Business object: %@", object);
         [yelpItems addObject:object];

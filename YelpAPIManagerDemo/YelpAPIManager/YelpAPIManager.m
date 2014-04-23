@@ -55,7 +55,7 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
                 sort:YelpSearchSortByBestMatch
       categoryFilter:@"food"
               radius:0
-                deal:NO];
+                deal:YES];
 }
 
 - (void)searchTerm:(NSString *)term

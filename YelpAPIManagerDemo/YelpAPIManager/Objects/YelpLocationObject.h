@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YelpObject.h"
 
-@interface YelpLocationObject : NSObject
+@interface YelpLocationObject : YelpObject
 
 @property (nonatomic, strong) NSArray *addressArray;
 @property (nonatomic, strong) NSSet *neighborhoods;

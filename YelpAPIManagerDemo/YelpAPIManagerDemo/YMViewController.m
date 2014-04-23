@@ -8,6 +8,7 @@
 
 #import "YMViewController.h"
 #import "YelpAPIManager.h"
+#import "YelpDealObject.h"
 
 @interface YMViewController ()
 
