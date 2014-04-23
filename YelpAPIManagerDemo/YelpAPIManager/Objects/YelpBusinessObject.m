@@ -20,7 +20,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n++++++++++++++\nBusiness ID: %@\nBusiness Name: %@\nDisplay phone: %@\nPhone: %@\nCategories: %@\nLocation:%@\nIsClaimed: %d\nIsClosed: %d\nRating: %f\nReview Count: %d\nImageURL: %@\nWebURL: %@\nMobileURL: %@\n++++++++++++++\n", _businessId, _businessName, _displayPhoneNumber, _phoneNumber, _categories, _locationInfo, _isClaimed, _isClosed, _rating, _reviewCount, _imageURL, _webURL, _mobileURL];
+    return [NSString stringWithFormat:@"\n++++++++++++++\nBusiness ID: %@\nBusiness Name: %@\nDisplay phone: %@\nPhone: %@\nCategories: %@\nLocation:%@\nIsClaimed: %d\nIsClosed: %d\nRating: %f\nReview Count: %d\nImageURL: %@\nWebURL: %@\nMobileURL: %@\nSnippetURL: %@\nSnippetText: %@\n++++++++++++++\n", _businessId, _businessName, _displayPhoneNumber, _phoneNumber, _categories, _locationInfo, _isClaimed, _isClosed, _rating, _reviewCount, _imageURL, _webURL, _mobileURL, _snippetImageURL, _snippetText];
 }
 
 @end

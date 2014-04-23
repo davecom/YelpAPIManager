@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) NSDictionary *categories;
 @property (nonatomic, strong) YelpLocationObject *locationInfo;
+@property (nonatomic, strong) NSString *snippetText;
 
 @property (nonatomic, assign) BOOL isClosed;
 @property (nonatomic, assign) BOOL isClaimed;
@@ -27,5 +28,6 @@
 @property (nonatomic, strong) NSURL *imageURL;
 @property (nonatomic, strong) NSURL *webURL;
 @property (nonatomic, strong) NSURL *mobileURL;
+@property (nonatomic, strong) NSURL *snippetImageURL;
 
 @end

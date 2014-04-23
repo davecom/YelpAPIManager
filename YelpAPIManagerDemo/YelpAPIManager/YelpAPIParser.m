@@ -34,6 +34,7 @@
         object.phoneNumber = businessItem[@"phone"];
         object.businessId = businessItem[@"id"];
         object.businessName = businessItem[@"name"];
+        object.snippetText = businessItem[@"snippet_text"];
         
         object.isClosed = [businessItem[@"is_closed"] boolValue];
         object.isClaimed = [businessItem[@"is_claimed"] boolValue];
@@ -44,6 +45,7 @@
         object.webURL = [NSURL URLWithString:businessItem[@"url"]];
         object.imageURL = [NSURL URLWithString:businessItem[@"image_url"]];
         object.mobileURL = [NSURL URLWithString:businessItem[@"mobile_url"]];
+        object.snippetImageURL = [NSURL URLWithString:businessItem[@"snippet_image_url"]];
         
         //Location
         NSDictionary *locationDictionary = businessItem[@"location"];
