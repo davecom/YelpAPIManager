@@ -11,6 +11,7 @@
 #import "NSData+Base64Encoder.h"
 #import "NSString+Encoding.h"
 #import "YelpAPIUtilities.h"
+#import "YelpAPIParser.h"
 
 static NSString *kYelpAPIBaseURL = @"http://api.yelp.com/v2";
 static NSString *kSignatureMethod = @"HMAC-SHA1";
@@ -49,12 +50,12 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
         neighborhood:@"New York"
           coordinate:kCLLocationCoordinate2DInvalid
             location:nil
-               limit:0
+               limit:2
               offset:0
                 sort:YelpSearchSortByBestMatch
       categoryFilter:@"food"
-              radius:5
-                deal:YES];
+              radius:0
+                deal:NO];
 }
 
 - (void)searchTerm:(NSString *)term
@@ -122,7 +123,9 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
     [params setObject:signature forKey:@"oauth_signature"];
     
     [_sessionManager GET:@"search" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"Response: %@", responseObject);
+        
+        [YelpAPIParser parseYelpSearchResponse:responseObject];
+        //NSLog(@"Response: %@", responseObject);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"error: %@", error);
@@ -166,7 +169,6 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
     NSString *baseURLString = [NSString stringWithFormat:@"%@/%@", kYelpAPIBaseURL, endPoint];
     NSURLRequest *request = [requestSerializer requestWithMethod:method URLString:baseURLString parameters:params error:&error];
     
-    NSString *tokenString = request.URL.absoluteString;
     NSString *encodedToken = [request.URL.absoluteString encodedURLParameterString];
     
     //Replace the first encountered encoded "&"
@@ -177,8 +179,7 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
     
     NSString *tokenStringEncoded = [NSString stringWithFormat:@"GET&%@", encodedToken];
     
-    NSLog(@"Token string: %@\n\n", tokenString);
-    NSLog(@"TOken string: %@\n\n", tokenStringEncoded);
+    //NSLog(@"TOken string: %@\n\n", tokenStringEncoded);
     
     NSString *APISecret = [self APISecret];
     NSString *signature = [YelpAPIUtilities hmacsha1:tokenStringEncoded secret:APISecret];

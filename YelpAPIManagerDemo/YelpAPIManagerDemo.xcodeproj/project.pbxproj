@@ -10,6 +10,7 @@
 		4DA9A5541906A22000148541 /* NSData+Base64Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9A5531906A22000148541 /* NSData+Base64Encoder.m */; };
 		4DA9A5571906A23300148541 /* NSString+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9A5561906A23300148541 /* NSString+Encoding.m */; };
 		4DA9A55B1906A2EF00148541 /* YelpAPIUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9A55A1906A2EF00148541 /* YelpAPIUtilities.m */; };
+		4DAA4D6519074B29003DC93A /* YelpAPIParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAA4D6419074B29003DC93A /* YelpAPIParser.m */; };
 		4DB9AE891904D1EF00F0D562 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB9AE881904D1EF00F0D562 /* Foundation.framework */; };
 		4DB9AE8B1904D1EF00F0D562 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB9AE8A1904D1EF00F0D562 /* CoreGraphics.framework */; };
 		4DB9AE8D1904D1EF00F0D562 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB9AE8C1904D1EF00F0D562 /* UIKit.framework */; };
@@ -49,6 +50,8 @@
 		4DA9A5561906A23300148541 /* NSString+Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Encoding.m"; sourceTree = "<group>"; };
 		4DA9A5591906A2EF00148541 /* YelpAPIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpAPIUtilities.h; sourceTree = "<group>"; };
 		4DA9A55A1906A2EF00148541 /* YelpAPIUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpAPIUtilities.m; sourceTree = "<group>"; };
+		4DAA4D6319074B29003DC93A /* YelpAPIParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpAPIParser.h; sourceTree = "<group>"; };
+		4DAA4D6419074B29003DC93A /* YelpAPIParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpAPIParser.m; sourceTree = "<group>"; };
 		4DB9AE851904D1EF00F0D562 /* YelpAPIManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YelpAPIManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB9AE881904D1EF00F0D562 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DB9AE8A1904D1EF00F0D562 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -201,6 +204,8 @@
 				4DB9AEC21904D23200F0D562 /* YelpAPIManager.m */,
 				4DA9A5591906A2EF00148541 /* YelpAPIUtilities.h */,
 				4DA9A55A1906A2EF00148541 /* YelpAPIUtilities.m */,
+				4DAA4D6319074B29003DC93A /* YelpAPIParser.h */,
+				4DAA4D6419074B29003DC93A /* YelpAPIParser.m */,
 			);
 			path = YelpAPIManager;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 				4DB9AE951904D1EF00F0D562 /* main.m in Sources */,
 				4DB9AEC31904D23200F0D562 /* YelpAPIManager.m in Sources */,
 				4DA9A55B1906A2EF00148541 /* YelpAPIUtilities.m in Sources */,
+				4DAA4D6519074B29003DC93A /* YelpAPIParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

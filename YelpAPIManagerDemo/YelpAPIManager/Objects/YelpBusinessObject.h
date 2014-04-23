@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *businessName;
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *neighborhood;
+@property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) NSDictionary *categories;
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
