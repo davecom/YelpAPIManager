@@ -7,23 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
+
+@class YelpLocationObject;
 
 @interface YelpBusinessObject : NSObject
 
 @property (nonatomic, strong) NSString *businessId;
 @property (nonatomic, strong) NSString *businessName;
-@property (nonatomic, strong) NSString *address;
-@property (nonatomic, strong) NSString *neighborhood;
+@property (nonatomic, strong) NSString *displayPhoneNumber;
 @property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) NSDictionary *categories;
+@property (nonatomic, strong) YelpLocationObject *locationInfo;
 
-@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 @property (nonatomic, assign) BOOL isClosed;
-@property (nonatomic, assign) CGFloat rating;
+@property (nonatomic, assign) BOOL isClaimed;
+@property (nonatomic, assign) double rating;
 @property (nonatomic, assign) NSUInteger reviewCount;
 
 @property (nonatomic, strong) NSURL *imageURL;
+@property (nonatomic, strong) NSURL *webURL;
 @property (nonatomic, strong) NSURL *mobileURL;
 
 @end

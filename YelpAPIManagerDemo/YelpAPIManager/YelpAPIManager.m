@@ -124,8 +124,8 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
     
     [_sessionManager GET:@"search" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         
+        NSLog(@"Response: %@", responseObject);
         [YelpAPIParser parseYelpSearchResponse:responseObject];
-        //NSLog(@"Response: %@", responseObject);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"error: %@", error);
