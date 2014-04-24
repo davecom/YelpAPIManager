@@ -9,6 +9,10 @@
 #import "YelpAPIParser.h"
 #import "YelpBusinessObject.h"
 #import "YelpLocationObject.h"
+#import "YelpGiftCertificateObject.h"
+#import "YelpGiftCertificateOption.h"
+#import "YelpDealObject.h"
+#import "YelpDealOption.h"
 
 @implementation YelpAPIParser
 
@@ -57,6 +61,78 @@
         locationInfo.postalCode = locationDictionary[@"postal_code"];
         locationInfo.stateCode = locationDictionary[@"state_code"];
         object.locationInfo = locationInfo;
+        
+        //Deal
+        NSDictionary *dealsArray = businessItem[@"deals"];
+        
+        if ([dealsArray count] > 0) {
+            
+            NSMutableArray *parsedDeals = [NSMutableArray array];
+            
+            for (NSDictionary *deal in dealsArray) {
+                YelpDealObject *dealObject = [YelpDealObject new];
+                dealObject.additionalRestriction = deal[@"additional_restrictions"];
+                dealObject.importantRestriction = deal[@"important_restrictions"];
+                dealObject.currencyCode = deal[@"currency_code"];
+                dealObject.dealId = deal[@"id"];
+                dealObject.dealImageURL = [NSURL URLWithString:deal[@"image_url"]];
+                dealObject.isPopular = [deal[@"is_popular"] boolValue];
+                dealObject.dealStartTimeSinceUnixEpoch = [deal[@"time_start"] doubleValue];
+                dealObject.dealTitle = deal[@"title"];
+                dealObject.dealURL = [NSURL URLWithString:deal[@"url"]];
+                dealObject.whatYouGet = deal[@"what_you_get"];
+                
+                NSArray *dealOptions = deal[@"options"];
+                if ([dealOptions count] > 0) {
+                    NSMutableArray *parsedDealOptions = [NSMutableArray array];
+                    for (NSDictionary *option in dealOptions) {
+                        YelpDealOption *dealOption = [YelpDealOption new];
+                        dealOption.formattedOriginalPrice = option[@"formatted_original_price"];
+                        dealOption.formattedCurrentPrice = option[@"formatted_price"];
+                        dealOption.isQuantityLimited = [option[@"is_quantity_limited"] integerValue];
+                        dealOption.originalPriceInCent = [option[@"original_price"] integerValue];
+                        dealOption.currentPriceInCent = [option[@"price"] integerValue];
+                        dealOption.purchaseURL = [NSURL URLWithString:option[@"purchase_url"]];
+                        dealOption.title = option[@"title"];
+                        [parsedDealOptions addObject:dealOption];
+                    }
+                    dealObject.dealOptions = [parsedDealOptions copy];
+                }
+                [parsedDeals addObject:dealObject];
+            }
+            object.deals = [parsedDeals copy];
+        }
+        
+        
+        
+        //Gift Certificate
+        NSArray *giftCerts = businessItem[@"gift_certificates"];
+        
+        if ([giftCerts count] > 0) {
+            NSMutableArray *parsedGiftCerts = [NSMutableArray new];
+            for (NSDictionary *giftCert in giftCerts) {
+                YelpGiftCertificateObject *giftCertObject = [YelpGiftCertificateObject new];
+                giftCertObject.currencyCode = giftCert[@"currency_code"];
+                giftCertObject.giftCertId = giftCert[@"id"];
+                giftCertObject.giftCertImageURL = giftCert[@"image_url"];
+                giftCertObject.unusedBalance = giftCert[@"unused_balances"];
+                giftCertObject.giftCertURL = giftCert[@"url"];
+                
+                NSArray *giftCertOptions = giftCert[@"options"];
+                if ([giftCertOptions count] > 0) {
+                    NSMutableArray *parsedGiftCertOptions = [NSMutableArray array];
+                    for (NSDictionary *giftOption in giftCertOptions) {
+                        YelpGiftCertificateOption *giftCertOption = [YelpGiftCertificateOption new];
+                        giftCertOption.formattedPrice = giftOption[@"formatted_price"];
+                        giftCertOption.priceInCent = [giftOption[@"price"] integerValue];
+                        [parsedGiftCertOptions addObject:giftCertOption];
+                    }
+                    giftCertObject.giftCertOptions = [parsedGiftCertOptions copy];
+                }
+                [parsedGiftCerts addObject:giftCertObject];
+            }
+            object.giftCertificates = [parsedGiftCerts copy];
+        }
         
         NSLog(@"Business object: %@", object);
         [yelpItems addObject:object];
