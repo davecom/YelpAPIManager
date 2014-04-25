@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) NSArray *addressArray;
 @property (nonatomic, strong) NSSet *neighborhoods;
-
 @property (nonatomic, strong) NSString *postalCode;
 @property (nonatomic, strong) NSString *stateCode;
 @property (nonatomic, strong) NSString *city;

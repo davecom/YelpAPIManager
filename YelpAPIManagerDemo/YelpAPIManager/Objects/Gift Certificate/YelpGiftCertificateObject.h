@@ -14,9 +14,7 @@
 @property (nonatomic, strong) NSString *currencyCode;
 @property (nonatomic, strong) NSString *giftCertId;
 @property (nonatomic, strong) NSString *unusedBalance;
-
 @property (nonatomic, strong) NSArray *giftCertOptions; //Array of YelpGiftCertificateOption
-
 @property (nonatomic, strong) NSURL *giftCertURL;
 @property (nonatomic, strong) NSURL *giftCertImageURL;
 

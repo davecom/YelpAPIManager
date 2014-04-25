@@ -10,14 +10,14 @@
 #import "YelpReviewUserObject.h"
 
 @interface YelpReviewObject : YelpObject
+
 @property (nonatomic, strong) NSString *excerpt;
 @property (nonatomic, strong) NSString *reviewId;
-@property (nonatomic, assign) CGFloat rating;
-
 @property (nonatomic, strong) NSURL *ratingImageLargeURL;
 @property (nonatomic, strong) NSURL *ratingImageSmallURL;
 @property (nonatomic, strong) NSURL *ratingImageURL;
-
-@property (nonatomic, assign) NSTimeInterval timeCreated; //sinceUnixEpoch
 @property (nonatomic, strong) YelpReviewUserObject *reviewUser;
+@property (nonatomic, assign) CGFloat rating;
+@property (nonatomic, assign) NSTimeInterval timeCreated; //sinceUnixEpoch
+
 @end
