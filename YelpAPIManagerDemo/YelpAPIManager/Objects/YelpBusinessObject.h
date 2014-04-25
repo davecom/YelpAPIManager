@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) NSArray *deals;
 @property (nonatomic, strong) NSArray *giftCertificates;
+@property (nonatomic, strong) NSArray *reviews;
 
 @property (nonatomic, strong) YelpLocationObject *locationInfo;
 

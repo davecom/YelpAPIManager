@@ -54,6 +54,7 @@ typedef enum {
 
 
 - (void)search;
+- (void)business;
 
 + (id)sharedInstance;
 

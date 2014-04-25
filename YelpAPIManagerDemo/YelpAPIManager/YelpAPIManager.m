@@ -43,7 +43,7 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
 }
 
 
-#pragma mark - Search
+#pragma mark - Search API
 
 - (void)search {
     [self searchTerm:nil
@@ -57,6 +57,11 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
               radius:0
                 deal:YES];
 }
+
+- (void)business {
+    [self findBusinessId:@"juice-hugger-cafe-brooklyn" countryCode:nil languageCode:nil reviewLanguageFilter:NO];
+}
+
 
 - (void)searchTerm:(NSString *)term
       neighborhood:(NSString *)neighborhood
@@ -133,6 +138,37 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
 }
 
 
+
+#pragma mark - Business API
+
+- (void)findBusinessId:(NSString *)businessId countryCode:(NSString *)countryCode languageCode:(NSString *)languageCode reviewLanguageFilter:(BOOL)shouldFilter {
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:[self oauthDictionary]];
+    
+    if (countryCode.length > 0) {
+        params[@"cc"] = countryCode;
+    }
+    
+    if (languageCode.length > 0) {
+        params[@"lang"] = languageCode;
+    }
+    
+    if (shouldFilter) {
+        params[@"lang_filter"] = @(shouldFilter);
+    }
+    
+    NSString *endpoint = [NSString stringWithFormat:@"business/%@", businessId];
+    NSString *signature = [self generateSignatureWithMethod:@"GET" endPoint:endpoint params:params];
+    [params setObject:signature forKey:@"oauth_signature"];
+    
+    [_sessionManager GET:endpoint parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [YelpAPIParser parseYelpBusinessResponse:responseObject];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"error: %@", error);
+    }];
+}
 
 #pragma mark - Singleton
 

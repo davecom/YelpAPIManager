@@ -12,4 +12,6 @@
 
 + (NSArray *)parseYelpSearchResponse:(id)response;
 
++ (NSArray *)parseYelpBusinessResponse:(id)response;
+
 @end

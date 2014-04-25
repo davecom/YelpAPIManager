@@ -20,7 +20,7 @@
 {
     [super viewDidLoad];
     
-    [[YelpAPIManager sharedInstance] search];
+    [[YelpAPIManager sharedInstance] business];
 }
 
 - (void)didReceiveMemoryWarning
