@@ -8,7 +8,6 @@
 
 #import "YMViewController.h"
 #import "YelpAPIManager.h"
-#import "YelpDealObject.h"
 
 @interface YMViewController ()
 
@@ -20,13 +19,28 @@
 {
     [super viewDidLoad];
     
-    [[YelpAPIManager sharedInstance] business];
+    [self search];
+    
+    //[self business];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Sample Calls
+
+- (void)search {
+    [[YelpAPIManager sharedInstance] searchTerm:nil
+                                   neighborhood:@"New York"
+                                     coordinate:kCLLocationCoordinate2DInvalid
+                                       location:nil
+                                          limit:2
+                                         offset:0
+                                           sort:YelpSearchSortByBestMatch
+                                 categoryFilter:@"food"
+                                         radius:0
+                                           deal:YES];
+}
+
+- (void)business {
+    [[YelpAPIManager sharedInstance] findBusinessId:@"juice-hugger-cafe-brooklyn" countryCode:nil languageCode:nil reviewLanguageFilter:NO];
 }
 
 @end

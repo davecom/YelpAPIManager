@@ -27,6 +27,9 @@
 @property (nonatomic, strong) NSURL *webURL;
 @property (nonatomic, strong) NSURL *mobileURL;
 @property (nonatomic, strong) NSURL *snippetImageURL;
+@property (nonatomic, strong) NSURL *ratingImageURLLarge;
+@property (nonatomic, strong) NSURL *ratingImageURLSmall;
+@property (nonatomic, strong) NSURL *ratingImageURL;
 @property (nonatomic, assign) BOOL isClosed;
 @property (nonatomic, assign) BOOL isClaimed;
 @property (nonatomic, assign) double rating;

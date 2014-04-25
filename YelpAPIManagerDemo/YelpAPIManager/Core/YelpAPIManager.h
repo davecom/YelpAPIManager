@@ -24,6 +24,7 @@ typedef enum {
 
 /**
  *  Generic method for Yelp Search API
+ *  See http://www.yelp.com/developers/documentation/v2/search_api
  *
  *  @param term           Search term (e.g. "food", "restaurants"). If term isn't included we search everything.
  
@@ -53,8 +54,23 @@ typedef enum {
               deal:(BOOL)deal;
 
 
-- (void)search;
-- (void)business;
+/**
+ *  Generic for Yelp Business API
+ *  See http://www.yelp.com/developers/documentation/v2/business
+ *
+ *  @param businessId       Lookup business information by id.
+ 
+ *  @param countryCode      ISO 3166-1 alpha-2 country code. Default country to use when parsing the location field. United States = US, Canada = CA, United Kingdom = GB (not UK). See http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+ 
+ *  @param languageCode     ISO 639 language code (default=en). Reviews and snippets written in the specified language will be shown. See http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+ 
+ *  @param shouldFilter     Whether to filter business reviews by the specified lang
+ */
+
+- (void)findBusinessId:(NSString *)businessId
+           countryCode:(NSString *)countryCode
+          languageCode:(NSString *)languageCode
+  reviewLanguageFilter:(BOOL)shouldFilter;
 
 + (id)sharedInstance;
 

@@ -45,24 +45,6 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
 
 #pragma mark - Search API
 
-- (void)search {
-    [self searchTerm:nil
-        neighborhood:@"New York"
-          coordinate:kCLLocationCoordinate2DInvalid
-            location:nil
-               limit:2
-              offset:0
-                sort:YelpSearchSortByBestMatch
-      categoryFilter:@"food"
-              radius:0
-                deal:YES];
-}
-
-- (void)business {
-    [self findBusinessId:@"juice-hugger-cafe-brooklyn" countryCode:nil languageCode:nil reviewLanguageFilter:NO];
-}
-
-
 - (void)searchTerm:(NSString *)term
       neighborhood:(NSString *)neighborhood
         coordinate:(CLLocationCoordinate2D)coordinate
@@ -129,7 +111,7 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
     
     [_sessionManager GET:@"search" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        //NSLog(@"Response: %@", responseObject);
+        NSLog(@"Response: %@", responseObject);
         [YelpAPIParser parseYelpSearchResponse:responseObject];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

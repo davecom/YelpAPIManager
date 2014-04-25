@@ -37,6 +37,9 @@
     
     self.rating = [data[@"rating"] doubleValue];
     self.reviewCount = [data[@"review_count"] unsignedIntegerValue];
+    self.ratingImageURL = [NSURL URLWithString:data[@"rating_img_url"]];
+    self.ratingImageURLLarge = [NSURL URLWithString:data[@"rating_img_url_large"]];
+    self.ratingImageURLSmall = [NSURL URLWithString:data[@"rating_img_url_small"]];
     
     self.webURL = [NSURL URLWithString:data[@"url"]];
     self.imageURL = [NSURL URLWithString:data[@"image_url"]];
