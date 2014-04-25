@@ -26,7 +26,7 @@
     for (NSDictionary *businessItem in businessArray) {
         YelpBusinessObject *object = [YelpBusinessObject objectWithDictionary:businessItem];
         [yelpItems addObject:object];
-        NSLog(@"Object: %@", object);
+        //NSLog(@"Object: %@", object);
     }
     return [yelpItems copy];
 }
@@ -34,7 +34,7 @@
 
 + (YelpBusinessObject *)parseYelpBusinessResponse:(id)response {
     YelpBusinessObject *object = [YelpBusinessObject objectWithDictionary:response];
-    NSLog(@"Object: %@", object);
+    //NSLog(@"Object: %@", object);
     return object;
 }
 

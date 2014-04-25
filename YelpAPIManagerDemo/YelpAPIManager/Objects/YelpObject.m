@@ -23,11 +23,13 @@
 }
 
 
+//TODO: Need to fix this when description is in array.
 - (NSString *)description {
     unsigned int count;
     Ivar* ivars = class_copyIvarList([self class], &count);
     
     NSMutableArray *descriptionArray = [NSMutableArray array];
+    
     for(unsigned int i = 0; i < count; ++i)
     {
         NSString *key = [NSString stringWithCString:ivar_getName(ivars[i]) encoding:NSUTF8StringEncoding];
