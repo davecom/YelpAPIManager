@@ -10,4 +10,10 @@
 
 @implementation YelpReviewUserObject
 
+- (void)parseWithDataDictionary:(NSDictionary *)data {
+    self.userId = data[@"id"];
+    self.username = data[@"name"];
+    self.userImageURL = [NSURL URLWithString:data[@"image_url"]];
+}
+
 @end

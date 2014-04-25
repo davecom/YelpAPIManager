@@ -10,4 +10,8 @@
 
 @interface YelpObject : NSObject
 
++ (instancetype)objectWithDictionary:(NSDictionary *)dictionary;
+//Abstract method. Must be overridden
+- (void)parseWithDataDictionary:(NSDictionary *)data;
+
 @end

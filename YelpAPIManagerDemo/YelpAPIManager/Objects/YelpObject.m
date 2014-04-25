@@ -11,6 +11,18 @@
 
 @implementation YelpObject
 
++ (instancetype)objectWithDictionary:(NSDictionary *)dictionary {
+    id object = [self.class new];
+    [object parseWithDataDictionary:dictionary];
+    return object;
+}
+
+
+- (void)parseWithDataDictionary:(NSDictionary *)data {
+    NSAssert(NO, @"This is an abstract method and should be overridden");
+}
+
+
 - (NSString *)description {
     unsigned int count;
     Ivar* ivars = class_copyIvarList([self class], &count);

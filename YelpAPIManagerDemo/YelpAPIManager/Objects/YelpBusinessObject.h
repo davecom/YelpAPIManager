@@ -37,4 +37,6 @@
 @property (nonatomic, strong) NSURL *mobileURL;
 @property (nonatomic, strong) NSURL *snippetImageURL;
 
+- (void)parseWithDataDictionary:(NSDictionary *)data;
+
 @end

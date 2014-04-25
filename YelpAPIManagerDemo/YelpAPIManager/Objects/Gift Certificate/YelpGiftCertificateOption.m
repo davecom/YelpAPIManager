@@ -10,4 +10,9 @@
 
 @implementation YelpGiftCertificateOption
 
+- (void)parseWithDataDictionary:(NSDictionary *)data {
+    self.formattedPrice = data[@"formatted_price"];
+    self.priceInCent = [data[@"price"] integerValue];
+}
+
 @end

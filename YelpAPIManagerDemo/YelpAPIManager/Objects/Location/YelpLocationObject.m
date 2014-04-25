@@ -10,4 +10,13 @@
 
 @implementation YelpLocationObject
 
+- (void)parseWithDataDictionary:(NSDictionary *)data {
+    self.addressArray = data[@"display_address"];
+    self.city = data[@"city"];
+    self.countryCode = data[@"country_code"];
+    self.neighborhoods = data[@"neighborhoods"];
+    self.postalCode = data[@"postal_code"];
+    self.stateCode = data[@"state_code"];
+}
+
 @end
