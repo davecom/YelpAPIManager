@@ -27,6 +27,10 @@
 #pragma mark - Sample Calls
 
 - (void)search {
+    
+    //TODO: Comment this to disable logging.
+    [[YelpAPIManager sharedInstance] setIsLogEnabled:YES];
+    
     [[YelpAPIManager sharedInstance] searchTerm:nil
                                    neighborhood:@"New York"
                                      coordinate:kCLLocationCoordinate2DInvalid

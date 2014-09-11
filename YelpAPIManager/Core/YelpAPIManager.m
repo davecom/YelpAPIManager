@@ -111,7 +111,10 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
     
     [_sessionManager GET:@"search" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        NSLog(@"Response: %@", responseObject);
+        if (self.isLogEnabled) {
+            NSLog(@"Response: %@", responseObject);
+        }
+        
         [YelpAPIParser parseYelpSearchResponse:responseObject];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -144,6 +147,10 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
     [params setObject:signature forKey:@"oauth_signature"];
     
     [_sessionManager GET:endpoint parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if (self.isLogEnabled) {
+            NSLog(@"Response: %@", responseObject);
+        }
         
         [YelpAPIParser parseYelpBusinessResponse:responseObject];
         

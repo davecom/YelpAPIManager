@@ -22,6 +22,8 @@ typedef enum {
 
 @interface YelpAPIManager : NSObject
 
+@property (nonatomic, assign) BOOL isLogEnabled;
+
 /**
  *  Generic method for Yelp Search API
  *  See http://www.yelp.com/developers/documentation/v2/search_api
