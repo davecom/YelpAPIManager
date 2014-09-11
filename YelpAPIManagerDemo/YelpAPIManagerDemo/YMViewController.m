@@ -21,6 +21,7 @@
     
     [self search];
     
+    //TODO: Uncomment this for business search example
     //[self business];
 }
 
@@ -44,6 +45,9 @@
 }
 
 - (void)business {
+    //TODO: Comment this to disable logging.
+    [[YelpAPIManager sharedInstance] setIsLogEnabled:YES];
+    
     [[YelpAPIManager sharedInstance] findBusinessId:@"juice-hugger-cafe-brooklyn" countryCode:nil languageCode:nil reviewLanguageFilter:NO];
 }
 
