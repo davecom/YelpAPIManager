@@ -1,9 +1,8 @@
 //
 //  NSData+Base64Encoder.m
-//  TIPurchaseManagerDemo
 //
 //  Created by Zian Chen on 3/27/14.
-//  Copyright (c) 2014 Time Inc. All rights reserved.
+//  Copyright (c) 2014 Zian Mobile Development. All rights reserved.
 //
 
 #import "NSData+Base64Encoder.h"
