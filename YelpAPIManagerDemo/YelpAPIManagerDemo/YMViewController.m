@@ -41,7 +41,16 @@
                                            sort:YelpSearchSortByBestMatch
                                  categoryFilter:@"food"
                                          radius:0
-                                           deal:YES];
+                                           deal:YES
+                                         result:^(NSArray *results, NSError *error) {
+                                             if (error) {
+                                                 //report error
+                                                 return;
+                                             } else {
+                                                 //do something with results
+                                                 return;
+                                             }
+                                         }];
 }
 
 - (void)business {

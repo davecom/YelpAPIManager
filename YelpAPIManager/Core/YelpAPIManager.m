@@ -54,7 +54,8 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
               sort:(YelpSearchSortBy)sort
     categoryFilter:(NSString *)categoryFilter
             radius:(NSUInteger)radius
-              deal:(BOOL)deal {
+              deal:(BOOL)deal
+            result:(void (^)(NSArray *results, NSError *error))resultBlock{
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:[self oauthDictionary]];
     
@@ -115,10 +116,12 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
             NSLog(@"Response: %@", responseObject);
         }
         
-        [YelpAPIParser parseYelpSearchResponse:responseObject];
+        NSArray *response = [YelpAPIParser parseYelpSearchResponse:responseObject];
+        resultBlock(response, nil);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"error: %@", error);
+        resultBlock(nil, error);
     }];
 }
 

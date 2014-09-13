@@ -53,7 +53,8 @@ typedef enum {
               sort:(YelpSearchSortBy)sort
     categoryFilter:(NSString *)categoryFilter
             radius:(NSUInteger)radius
-              deal:(BOOL)deal;
+              deal:(BOOL)deal
+            result:(void (^)(NSArray *results, NSError *error))resultBlock;
 
 
 /**
