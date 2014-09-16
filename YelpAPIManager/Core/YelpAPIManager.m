@@ -12,12 +12,13 @@
 #import "NSString+Encoding.h"
 #import "YelpAPIUtilities.h"
 #import "YelpAPIParser.h"
+#import "AFHTTPRequestOperationManager.h"
 
 static NSString *kYelpAPIBaseURL = @"http://api.yelp.com/v2";
 static NSString *kSignatureMethod = @"HMAC-SHA1";
 
 @interface YelpAPIManager()
-@property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
+@property (nonatomic, strong) AFHTTPRequestOperationManager *sessionManager;
 @property (nonatomic, strong) NSString *consumerKey;
 @property (nonatomic, strong) NSString *consumerSecret;
 @property (nonatomic, strong) NSString *token;
@@ -29,7 +30,7 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
 - (id)init {
     self = [super init];
     if (self) {
-        _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kYelpAPIBaseURL]];
+        _sessionManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kYelpAPIBaseURL]];
         
         NSURL *file = [[NSBundle mainBundle] URLForResource:@"YelpAPIConstants" withExtension:@"plist"];
         NSDictionary *APIConstants = [NSDictionary dictionaryWithContentsOfURL:file];
@@ -110,7 +111,7 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
     NSString *signature = [self generateSignatureWithMethod:@"GET" endPoint:@"search" params:params];
     [params setObject:signature forKey:@"oauth_signature"];
     
-    [_sessionManager GET:@"search" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+    [_sessionManager GET:@"search" parameters:params success:^(AFHTTPRequestOperation *task, id responseObject) {
         
         if (self.isLogEnabled) {
             NSLog(@"Response: %@", responseObject);
@@ -119,8 +120,10 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
         NSArray *response = [YelpAPIParser parseYelpSearchResponse:responseObject];
         resultBlock(response, nil);
         
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    } failure:^(AFHTTPRequestOperation *task, NSError *error) {
+        
         NSLog(@"error: %@", error);
+        NSLog(@"%@", task.responseString);
         resultBlock(nil, error);
     }];
 }
@@ -149,7 +152,7 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
     NSString *signature = [self generateSignatureWithMethod:@"GET" endPoint:endpoint params:params];
     [params setObject:signature forKey:@"oauth_signature"];
     
-    [_sessionManager GET:endpoint parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+    [_sessionManager GET:endpoint parameters:params success:^(AFHTTPRequestOperation *task, id responseObject) {
         
         if (self.isLogEnabled) {
             NSLog(@"Response: %@", responseObject);
@@ -157,8 +160,9 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
         
         [YelpAPIParser parseYelpBusinessResponse:responseObject];
         
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    } failure:^(AFHTTPRequestOperation *task, NSError *error) {
         NSLog(@"error: %@", error);
+        NSLog(@"%@", task.responseString);
     }];
 }
 
