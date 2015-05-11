@@ -122,9 +122,18 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
         
     } failure:^(AFHTTPRequestOperation *task, NSError *error) {
         
-        NSLog(@"error: %@", error);
-        NSLog(@"%@", task.responseString);
-        resultBlock(nil, error);
+        NSLog(@"Error: %@", error);
+        NSLog(@"Task Response String: %@", task.responseString);
+        
+        if (task.responseObject != nil && [task.responseObject objectForKey:@"error"] && [[task.responseObject objectForKey:@"error"] objectForKey:@"text"]){
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            [errorDetail setValue:[NSString stringWithFormat:@"Yelp Connection Error: %@", [[task.responseObject objectForKey:@"error"] objectForKey:@"text"]] forKey:NSLocalizedDescriptionKey];
+            NSError *yError = [NSError errorWithDomain:@"Yelp" code:100 userInfo:errorDetail];
+            resultBlock(nil, yError);
+        }
+        else {
+            resultBlock(nil, error);
+        }
     }];
 }
 
@@ -132,7 +141,7 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
 
 #pragma mark - Business API
 
-- (void)findBusinessId:(NSString *)businessId countryCode:(NSString *)countryCode languageCode:(NSString *)languageCode reviewLanguageFilter:(BOOL)shouldFilter {
+- (void)findBusinessId:(NSString *)businessId countryCode:(NSString *)countryCode languageCode:(NSString *)languageCode reviewLanguageFilter:(BOOL)shouldFilter result:(void (^)(YelpBusinessObject *ybo, NSError *error))resultBlock {
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:[self oauthDictionary]];
     
@@ -158,11 +167,22 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
             NSLog(@"Response: %@", responseObject);
         }
         
-        [YelpAPIParser parseYelpBusinessResponse:responseObject];
+        YelpBusinessObject *yb = [YelpAPIParser parseYelpBusinessResponse:responseObject];
+        resultBlock(yb, nil);
         
     } failure:^(AFHTTPRequestOperation *task, NSError *error) {
         NSLog(@"error: %@", error);
         NSLog(@"%@", task.responseString);
+        
+        if (task.responseObject != nil && [task.responseObject objectForKey:@"error"] && [[task.responseObject objectForKey:@"error"] objectForKey:@"text"]){
+            NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+            [errorDetail setValue:[NSString stringWithFormat:@"Yelp Connection Error: %@", [[task.responseObject objectForKey:@"error"] objectForKey:@"text"]] forKey:NSLocalizedDescriptionKey];
+            NSError *yError = [NSError errorWithDomain:@"Yelp" code:100 userInfo:errorDetail];
+            resultBlock(nil, yError);
+        }
+        else {
+            resultBlock(nil, error);
+        }
     }];
 }
 

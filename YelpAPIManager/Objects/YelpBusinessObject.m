@@ -35,6 +35,7 @@
     self.isClosed = [data[@"is_closed"] boolValue];
     self.isClaimed = [data[@"is_claimed"] boolValue];
     
+    self.distance = [data[@"distance"] doubleValue];
     self.rating = [data[@"rating"] doubleValue];
     self.reviewCount = [data[@"review_count"] unsignedIntegerValue];
     self.ratingImageURL = [NSURL URLWithString:data[@"rating_img_url"]];
@@ -80,7 +81,7 @@
     
     //Reviews
     NSArray *reviews = data[@"reviews"];
-    
+    //NSLog(@"%lu reviews", (unsigned long)[reviews count]);
     if ([reviews count] > 0) {
         NSMutableArray *parsedReviews = [NSMutableArray new];
         for (NSDictionary *reviewItem in reviews) {
@@ -89,6 +90,18 @@
         }
         self.reviews = [parsedReviews copy];
     }
+}
+
+-(NSString *)distanceOrStreet
+{
+    if (self.distance > 0.0) {
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleUsesMetricSystem] boolValue]){
+            return [NSString stringWithFormat:@"%.1f km", self.distance / 1000];
+        } else {
+            return [NSString stringWithFormat:@"%.1f mi", self.distance * 0.000621371192];
+        }
+    }
+    return self.locationInfo.addressArray[0];
 }
 
 @end

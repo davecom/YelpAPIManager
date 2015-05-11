@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "YelpBusinessObject.h"
 
 /**
  *  Sort mode: 0=Best matched (default), 1=Distance, 2=Highest Rated. If the mode is 1 or 2 a search may retrieve an additional 20 businesses past the initial limit of the first 20 results. This is done by specifying an offset and limit of 20. Sort by distance is only supported for a location or geographic search. The rating sort is not strictly sorted by the rating value, but by an adjusted rating value that takes into account the number of ratings, similar to a bayesian average. This is so a business with 1 rating of 5 stars doesn't immediately jump to the top.
@@ -73,7 +74,8 @@ typedef enum {
 - (void)findBusinessId:(NSString *)businessId
            countryCode:(NSString *)countryCode
           languageCode:(NSString *)languageCode
-  reviewLanguageFilter:(BOOL)shouldFilter;
+  reviewLanguageFilter:(BOOL)shouldFilter
+  result:(void (^)(YelpBusinessObject *ybo, NSError *error))resultBlock;
 
 + (id)sharedInstance;
 

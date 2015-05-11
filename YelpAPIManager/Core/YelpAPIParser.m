@@ -7,7 +7,7 @@
 //
 
 #import "YelpAPIParser.h"
-#import "YelpBusinessObject.h"
+
 #import "YelpLocationObject.h"
 #import "YelpGiftCertificateObject.h"
 #import "YelpGiftCertificateOption.h"

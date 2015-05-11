@@ -33,6 +33,7 @@
 @property (nonatomic, assign) BOOL isClosed;
 @property (nonatomic, assign) BOOL isClaimed;
 @property (nonatomic, assign) double rating;
+@property (nonatomic, assign) double distance;
 @property (nonatomic, assign) NSUInteger reviewCount;
 
 @end

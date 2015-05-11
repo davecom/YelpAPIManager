@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YelpBusinessObject.h"
 
 @interface YelpAPIParser : NSObject
 
 + (NSArray *)parseYelpSearchResponse:(id)response;
 
-+ (NSArray *)parseYelpBusinessResponse:(id)response;
++ (YelpBusinessObject *)parseYelpBusinessResponse:(id)response;
 
 @end
