@@ -30,6 +30,8 @@
 @property (nonatomic, strong) NSURL *ratingImageURLLarge;
 @property (nonatomic, strong) NSURL *ratingImageURLSmall;
 @property (nonatomic, strong) NSURL *ratingImageURL;
+@property (nonatomic, strong) NSURL *reservationURL;
+@property (nonatomic, strong) NSURL *orderOnlineURL;
 @property (nonatomic, assign) BOOL isClosed;
 @property (nonatomic, assign) BOOL isClaimed;
 @property (nonatomic, assign) double rating;

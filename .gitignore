@@ -19,3 +19,5 @@ DerivedData
 AFNetworking/
 # CocoaPods
 Pods
+YelpAPIManager/constants/
+

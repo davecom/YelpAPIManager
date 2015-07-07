@@ -46,6 +46,8 @@
     self.imageURL = [NSURL URLWithString:data[@"image_url"]];
     self.mobileURL = [NSURL URLWithString:data[@"mobile_url"]];
     self.snippetImageURL = [NSURL URLWithString:data[@"snippet_image_url"]];
+    self.reservationURL = [NSURL URLWithString:data[@"reservation_url"]];
+    self.orderOnlineURL = [NSURL URLWithString:data[@"eat24_url"]];
     
     //Location
     self.locationInfo = [YelpLocationObject objectWithDictionary:data[@"location"]];

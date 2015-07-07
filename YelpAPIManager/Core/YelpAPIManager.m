@@ -107,6 +107,8 @@ static NSString *kSignatureMethod = @"HMAC-SHA1";
     if (deal) {
         params[@"deals_filter"] = @(deal);
     }
+    
+    params[@"actionlinks"] = @(YES);
 
     NSString *signature = [self generateSignatureWithMethod:@"GET" endPoint:@"search" params:params];
     [params setObject:signature forKey:@"oauth_signature"];
